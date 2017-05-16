@@ -10,7 +10,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
  * @author javier.moreno
  *
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.d4rk3on.intranet")
 public class Application extends SpringBootServletInitializer {
 
 	@Override
