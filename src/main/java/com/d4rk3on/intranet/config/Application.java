@@ -1,4 +1,4 @@
-package com.d4rk3on.intranet;
+package com.d4rk3on.intranet.config;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
