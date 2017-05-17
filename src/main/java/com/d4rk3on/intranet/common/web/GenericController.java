@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 public abstract class GenericController implements Serializable {
 
 	/**
-	 * 
+	 * Generated Serial Version ID
 	 */
 	private static final long serialVersionUID = -6662227396485321706L;
 

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController extends GenericController {
 
 	/**
-	 * 
+	 * Generated Serial Version ID
 	 */
 	private static final long serialVersionUID = 1822324567280428583L;
 
