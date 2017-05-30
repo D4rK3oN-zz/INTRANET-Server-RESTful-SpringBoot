@@ -3,6 +3,8 @@ package com.d4rk3on.intranet.common.model.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.d4rk3on.intranet.common.util.constant.MongoDbConstants;
+
 import lombok.Data;
 
 /**
@@ -11,7 +13,7 @@ import lombok.Data;
  * @author javier.moreno
  *
  */
-@Document(collection = "employees")
+@Document(collection = MongoDbConstants.COL_EMPLOYEE)
 @Data
 public class Employee {
 

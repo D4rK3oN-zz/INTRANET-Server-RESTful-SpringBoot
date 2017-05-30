@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author javier.moreno
  *
  */
-public class AppConstant implements Serializable {
+public class AppConstants implements Serializable {
 
 	/**
 	 * Generated Serial Version ID

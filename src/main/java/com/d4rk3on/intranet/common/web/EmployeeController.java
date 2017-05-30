@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.d4rk3on.intranet.common.model.dto.response.EmployeeResponseDto;
-import com.d4rk3on.intranet.common.util.constant.AppConstant;
+import com.d4rk3on.intranet.common.util.constant.AppConstants;
 import com.d4rk3on.intranet.common.util.constant.UrlConstants;
 
 /**
@@ -39,7 +39,7 @@ public class EmployeeController extends GenericController {
 	public EmployeeResponseDto getEmployeeById(@Valid @PathVariable("employeeId") Integer employeeId) {
 		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al método: [{}];",
 				SecurityContextHolder.getContext().getAuthentication().getName(), Thread.currentThread().getId(),
-				Thread.currentThread().getStackTrace()[AppConstant.STACK_TRACE_CUR_METHOD].getMethodName());
+				Thread.currentThread().getStackTrace()[AppConstants.STACK_TRACE_CUR_METHOD].getMethodName());
 
 		LOGGER.debug("[Uid: {}] [Thread: {}] >>> Parámetros de entrada: <employeeId> [{}];",
 				SecurityContextHolder.getContext().getAuthentication().getName(), Thread.currentThread().getId(),
@@ -57,7 +57,7 @@ public class EmployeeController extends GenericController {
 	public List<EmployeeResponseDto> getEmployees() {
 		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al método: [{}];",
 				SecurityContextHolder.getContext().getAuthentication().getName(), Thread.currentThread().getId(),
-				Thread.currentThread().getStackTrace()[AppConstant.STACK_TRACE_CUR_METHOD].getMethodName());
+				Thread.currentThread().getStackTrace()[AppConstants.STACK_TRACE_CUR_METHOD].getMethodName());
 		return null;
 	}
 
