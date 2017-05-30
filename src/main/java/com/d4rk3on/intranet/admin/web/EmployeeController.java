@@ -3,6 +3,7 @@ package com.d4rk3on.intranet.admin.web;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.d4rk3on.intranet.common.util.constant.UrlConstants;
 import com.d4rk3on.intranet.common.web.GenericController;
 
 /**
@@ -11,7 +12,7 @@ import com.d4rk3on.intranet.common.web.GenericController;
  *
  */
 @RestController
-@RequestMapping("/admin")
+@RequestMapping(UrlConstants.PATH_ADMIN + UrlConstants.EMPLOYEE)
 public class EmployeeController extends GenericController {
 
 	/**
