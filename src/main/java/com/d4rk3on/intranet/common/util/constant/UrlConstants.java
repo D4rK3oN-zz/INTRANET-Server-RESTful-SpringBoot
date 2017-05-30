@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 public class UrlConstants implements Serializable {
 
+	/**
+	 * Generated Serial Version ID
+	 */
 	private static final long serialVersionUID = -5013458718225488828L;
 
 	public static final String PATH_PUBLIC = "/public";
