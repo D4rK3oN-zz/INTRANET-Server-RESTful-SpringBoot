@@ -15,4 +15,9 @@ public class AppConstant implements Serializable {
 	 */
 	private static final long serialVersionUID = -3627582032172715382L;
 
+	/**
+	 * Posición del obj. 'Thread.currentThread().getStackTrace()' que contiene
+	 * el nombre del método que está siendo invocado.
+	 */
+	public static final int STACK_TRACE_CUR_METHOD = 1;
 }
