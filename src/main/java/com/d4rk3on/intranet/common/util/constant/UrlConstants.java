@@ -2,6 +2,12 @@ package com.d4rk3on.intranet.common.util.constant;
 
 import java.io.Serializable;
 
+/**
+ * Url's constants
+ * 
+ * @author javier.moreno
+ *
+ */
 public class UrlConstants implements Serializable {
 
 	/**

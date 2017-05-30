@@ -2,6 +2,12 @@ package com.d4rk3on.intranet.common.util.constant;
 
 import java.io.Serializable;
 
+/**
+ * Application constants
+ * 
+ * @author javier.moreno
+ *
+ */
 public class AppConstant implements Serializable {
 
 	/**

@@ -5,6 +5,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
 
+/**
+ * Employee entity
+ * 
+ * @author javier.moreno
+ *
+ */
 @Document(collection = "employees")
 @Data
 public class Employee {

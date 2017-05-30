@@ -4,6 +4,12 @@ import java.io.Serializable;
 
 import lombok.Data;
 
+/**
+ * Employee model
+ * 
+ * @author javier.moreno
+ *
+ */
 @Data
 public class EmployeeBean implements Serializable {
 

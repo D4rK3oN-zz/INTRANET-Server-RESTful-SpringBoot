@@ -6,6 +6,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.d4rk3on.intranet.common.service.EmployeeService;
 
+/**
+ * Employee service implementation
+ * 
+ * @author javier.moreno
+ *
+ */
 @Service
 @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Throwable.class)
 public class EmployeeServiceImpl implements EmployeeService {
