@@ -1,5 +1,7 @@
 package com.d4rk3on.intranet.common.model.entity;
 
+import java.sql.Timestamp;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -31,4 +33,10 @@ public class Employee {
 	private String surname;
 
 	private String email;
+
+	private Timestamp creationDate;
+
+	private Timestamp modifyDate;
+
+	private Timestamp deleteDate;
 }

@@ -1,6 +1,7 @@
 package com.d4rk3on.intranet.common.model.bean;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import lombok.Data;
 
@@ -29,4 +30,10 @@ public class EmployeeBean implements Serializable {
 	private String surname;
 
 	private String email;
+
+	private Timestamp creationDate;
+
+	private Timestamp modifyDate;
+
+	private Timestamp deleteDate;
 }
