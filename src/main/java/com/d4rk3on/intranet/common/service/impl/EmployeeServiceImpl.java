@@ -38,25 +38,25 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public List<EmployeeBean> findEmployeesByName(String name) {
+	public List<EmployeeBean> findEmployeesByDocumentId(String documentId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<EmployeeBean> findEmployeesBySurname(String surname) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public EmployeeBean getEmployeeById(String id) {
+	public List<EmployeeBean> findEmployeesByNameAndSurname(String name, String surname) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public EmployeeBean getEmployeeByEmployeeNumber(Integer employeeNumber) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EmployeeBean getEmployeeById(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

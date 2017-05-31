@@ -28,6 +28,8 @@ public class Employee {
 
 	private String password;
 
+	private String documentId;
+
 	private String name;
 
 	private String surname;

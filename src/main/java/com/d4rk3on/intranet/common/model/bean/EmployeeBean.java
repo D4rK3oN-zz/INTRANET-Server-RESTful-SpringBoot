@@ -25,6 +25,10 @@ public class EmployeeBean implements Serializable {
 
 	private String username;
 
+	private String password;
+
+	private String documentId;
+
 	private String name;
 
 	private String surname;

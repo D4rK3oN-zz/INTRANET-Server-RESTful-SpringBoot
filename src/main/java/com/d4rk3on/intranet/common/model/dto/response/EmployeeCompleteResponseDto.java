@@ -1,6 +1,7 @@
 package com.d4rk3on.intranet.common.model.dto.response;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +12,7 @@ import lombok.Setter;
  * @author javier.moreno
  *
  */
-public class EmployeeSimpleResponseDto implements Serializable {
+public class EmployeeCompleteResponseDto implements Serializable {
 
 	/**
 	 * Generated Serial Version ID
@@ -21,6 +22,10 @@ public class EmployeeSimpleResponseDto implements Serializable {
 	@Getter
 	@Setter
 	private Integer id;
+
+	@Getter
+	@Setter
+	private String username;
 
 	@Getter
 	@Setter
@@ -41,4 +46,16 @@ public class EmployeeSimpleResponseDto implements Serializable {
 	@Getter
 	@Setter
 	private String email;
+
+	@Getter
+	@Setter
+	private Timestamp creationDate;
+
+	@Getter
+	@Setter
+	private Timestamp modifyDate;
+
+	@Getter
+	@Setter
+	private Timestamp deleteDate;
 }

@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.d4rk3on.intranet.common.model.dto.response.EmployeeResponseDto;
+import com.d4rk3on.intranet.common.model.dto.response.EmployeeCompleteResponseDto;
+import com.d4rk3on.intranet.common.model.dto.response.EmployeeSimpleResponseDto;
 import com.d4rk3on.intranet.common.util.constant.AppConstants;
 import com.d4rk3on.intranet.common.util.constant.UrlConstants;
 
@@ -36,7 +37,7 @@ public class EmployeeController extends GenericController {
 	 * @return EmployeeResponseDto
 	 */
 	@RequestMapping(value = UrlConstants.EMPLOYEE_ID, method = RequestMethod.GET)
-	public EmployeeResponseDto getEmployeeById(@Valid @PathVariable("employeeId") Integer employeeId) {
+	public EmployeeCompleteResponseDto getEmployeeByEmployeeNumber(@Valid @PathVariable("employeeId") String employeeId) {
 		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al método: [{}];",
 				SecurityContextHolder.getContext().getAuthentication().getName(), Thread.currentThread().getId(),
 				Thread.currentThread().getStackTrace()[AppConstants.STACK_TRACE_CUR_METHOD].getMethodName());
@@ -54,7 +55,7 @@ public class EmployeeController extends GenericController {
 	 * @return List<EmployeeResponseDto>
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public List<EmployeeResponseDto> getEmployees() {
+	public List<EmployeeSimpleResponseDto> getEmployees() {
 		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al método: [{}];",
 				SecurityContextHolder.getContext().getAuthentication().getName(), Thread.currentThread().getId(),
 				Thread.currentThread().getStackTrace()[AppConstants.STACK_TRACE_CUR_METHOD].getMethodName());

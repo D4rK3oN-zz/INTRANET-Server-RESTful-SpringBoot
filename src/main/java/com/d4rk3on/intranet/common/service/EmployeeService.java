@@ -18,13 +18,13 @@ public interface EmployeeService extends Serializable {
 
 	public List<EmployeeBean> findEmployeesByCreationDate(Timestamp startDate, Timestamp endingDate);
 
-	public List<EmployeeBean> findEmployeesByName(String name);
+	public List<EmployeeBean> findEmployeesByDocumentId(String documentId);
 
-	public List<EmployeeBean> findEmployeesBySurname(String surname);
-
-	public EmployeeBean getEmployeeById(String id);
+	public List<EmployeeBean> findEmployeesByNameAndSurname(String name, String surname);
 
 	public EmployeeBean getEmployeeByEmployeeNumber(Integer employeeNumber);
+
+	public EmployeeBean getEmployeeById(String id);
 
 	public EmployeeBean getEmployeeByUsername(String username);
 
