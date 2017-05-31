@@ -1,4 +1,4 @@
-package com.d4rk3on.intranet.common.util.component;
+package com.d4rk3on.intranet.common.util.function;
 
 import java.io.Serializable;
 

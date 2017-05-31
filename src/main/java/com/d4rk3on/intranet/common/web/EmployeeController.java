@@ -14,8 +14,8 @@ import com.d4rk3on.intranet.common.model.bean.EmployeeBean;
 import com.d4rk3on.intranet.common.model.dto.response.EmployeeCompleteResponseDto;
 import com.d4rk3on.intranet.common.model.dto.response.EmployeeSimpleResponseDto;
 import com.d4rk3on.intranet.common.service.EmployeeService;
-import com.d4rk3on.intranet.common.util.component.Utils;
 import com.d4rk3on.intranet.common.util.constant.UrlConstants;
+import com.d4rk3on.intranet.common.util.function.Utils;
 
 /**
  * Employee controller
