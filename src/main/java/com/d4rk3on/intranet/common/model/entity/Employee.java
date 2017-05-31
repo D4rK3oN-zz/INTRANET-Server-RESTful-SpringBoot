@@ -2,6 +2,8 @@ package com.d4rk3on.intranet.common.model.entity;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -22,12 +24,16 @@ public class Employee {
 	@Id
 	private String id;
 
+	@NotNull(message = "")
 	private Integer employeeNumber;
 
+	@NotNull(message = "")
 	private String username;
 
+	@NotNull(message = "")
 	private String password;
 
+	@NotNull(message = "")
 	private String documentId;
 
 	private String name;
@@ -36,6 +42,7 @@ public class Employee {
 
 	private String email;
 
+	@NotNull(message = "")
 	private Timestamp creationDate;
 
 	private Timestamp modifyDate;

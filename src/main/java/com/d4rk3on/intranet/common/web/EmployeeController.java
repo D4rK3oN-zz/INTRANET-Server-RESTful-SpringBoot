@@ -4,14 +4,17 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.d4rk3on.intranet.common.model.bean.EmployeeBean;
 import com.d4rk3on.intranet.common.model.dto.response.EmployeeCompleteResponseDto;
 import com.d4rk3on.intranet.common.model.dto.response.EmployeeSimpleResponseDto;
+import com.d4rk3on.intranet.common.service.EmployeeService;
 import com.d4rk3on.intranet.common.util.constant.AppConstants;
 import com.d4rk3on.intranet.common.util.constant.UrlConstants;
 
@@ -30,11 +33,14 @@ public class EmployeeController extends GenericController {
 	 */
 	private static final long serialVersionUID = -5113575402724058415L;
 
+	@Autowired
+	private EmployeeService employeeService;
+
 	/**
 	 * Obtiene el empleado por su número de empleado.
 	 * 
 	 * @param employeeId
-	 * @return EmployeeResponseDto
+	 * @return EmployeeCompleteResponseDto
 	 */
 	@RequestMapping(value = UrlConstants.EMPLOYEE_ID, method = RequestMethod.GET)
 	public EmployeeCompleteResponseDto getEmployeeByEmployeeNumber(@Valid @PathVariable("employeeId") String employeeId) {
@@ -45,6 +51,8 @@ public class EmployeeController extends GenericController {
 		LOGGER.debug("[Uid: {}] [Thread: {}] >>> Parámetros de entrada: <employeeId> [{}];",
 				SecurityContextHolder.getContext().getAuthentication().getName(), Thread.currentThread().getId(),
 				employeeId);
+
+		EmployeeBean employee = employeeService.getEmployeeById(employeeId);
 
 		return null;
 	}
