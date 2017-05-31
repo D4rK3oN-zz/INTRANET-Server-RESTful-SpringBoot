@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 /**
  * Spring boot application initializer
@@ -12,6 +13,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
  *
  */
 @SpringBootApplication(scanBasePackages = "com.d4rk3on.intranet")
+@EnableMongoRepositories({ "com.d4rk3on.intranet.*.repository" })
 public class Application extends SpringBootServletInitializer {
 
 	@Override

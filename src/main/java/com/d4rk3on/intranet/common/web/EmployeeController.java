@@ -5,7 +5,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,7 +14,7 @@ import com.d4rk3on.intranet.common.model.bean.EmployeeBean;
 import com.d4rk3on.intranet.common.model.dto.response.EmployeeCompleteResponseDto;
 import com.d4rk3on.intranet.common.model.dto.response.EmployeeSimpleResponseDto;
 import com.d4rk3on.intranet.common.service.EmployeeService;
-import com.d4rk3on.intranet.common.util.constant.AppConstants;
+import com.d4rk3on.intranet.common.util.component.Utils;
 import com.d4rk3on.intranet.common.util.constant.UrlConstants;
 
 /**
@@ -34,6 +33,9 @@ public class EmployeeController extends GenericController {
 	private static final long serialVersionUID = -5113575402724058415L;
 
 	@Autowired
+	private Utils utils;
+
+	@Autowired
 	private EmployeeService employeeService;
 
 	/**
@@ -43,14 +45,13 @@ public class EmployeeController extends GenericController {
 	 * @return EmployeeCompleteResponseDto
 	 */
 	@RequestMapping(value = UrlConstants.EMPLOYEE_ID, method = RequestMethod.GET)
-	public EmployeeCompleteResponseDto getEmployeeByEmployeeNumber(@Valid @PathVariable("employeeId") String employeeId) {
-		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al método: [{}];",
-				SecurityContextHolder.getContext().getAuthentication().getName(), Thread.currentThread().getId(),
-				Thread.currentThread().getStackTrace()[AppConstants.STACK_TRACE_CUR_METHOD].getMethodName());
+	public EmployeeCompleteResponseDto getEmployeeByEmployeeNumber(
+			@Valid @PathVariable("employeeId") String employeeId) {
+		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al método: [{}];", utils.getAuthenticationName(),
+				utils.getThreadId(), utils.getMethodName(Thread.currentThread().getStackTrace()));
 
 		LOGGER.debug("[Uid: {}] [Thread: {}] >>> Parámetros de entrada: <employeeId> [{}];",
-				SecurityContextHolder.getContext().getAuthentication().getName(), Thread.currentThread().getId(),
-				employeeId);
+				utils.getAuthenticationName(), utils.getThreadId(), employeeId);
 
 		EmployeeBean employee = employeeService.getEmployeeById(employeeId);
 
@@ -64,9 +65,8 @@ public class EmployeeController extends GenericController {
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public List<EmployeeSimpleResponseDto> getEmployees() {
-		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al método: [{}];",
-				SecurityContextHolder.getContext().getAuthentication().getName(), Thread.currentThread().getId(),
-				Thread.currentThread().getStackTrace()[AppConstants.STACK_TRACE_CUR_METHOD].getMethodName());
+		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al método: [{}];", utils.getAuthenticationName(),
+				utils.getThreadId(), utils.getMethodName(Thread.currentThread().getStackTrace()));
 		return null;
 	}
 
