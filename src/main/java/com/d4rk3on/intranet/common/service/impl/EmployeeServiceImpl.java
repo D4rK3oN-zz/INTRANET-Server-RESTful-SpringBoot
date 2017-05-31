@@ -14,7 +14,9 @@ import com.d4rk3on.intranet.common.model.bean.EmployeeBean;
 import com.d4rk3on.intranet.common.model.entity.Employee;
 import com.d4rk3on.intranet.common.repository.EmployeeDao;
 import com.d4rk3on.intranet.common.service.EmployeeService;
+import com.d4rk3on.intranet.common.util.converter.BusinessLogicMapper;
 import com.d4rk3on.intranet.common.util.function.Utils;
+import com.d4rk3on.intranet.error.model.exception.FunctionalException;
 
 /**
  * Employee service implementation
@@ -38,6 +40,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	private Utils utils;
+
+	@Autowired
+	private BusinessLogicMapper<EmployeeBean, Employee> employeeMapper;
 
 	@Autowired
 	private EmployeeDao employeeDao;
@@ -74,7 +79,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public EmployeeBean getEmployeeById(String id) {
-		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al método: [{}];", utils.getAuthenticationName(),
+		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al servicio: [{}];", utils.getAuthenticationName(),
 				utils.getThreadId(), utils.getMethodName(Thread.currentThread().getStackTrace()));
 
 		LOGGER.debug("[Uid: {}] [Thread: {}] >>> Parámetros de entrada: <id> [{}];", utils.getAuthenticationName(),
@@ -85,7 +90,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 		LOGGER.trace("[Uid: {}] [Thread: {}] >>> Respuesta de la db: <employee> [{}];", utils.getAuthenticationName(),
 				utils.getThreadId(), employee);
 
-		return null;
+		if (employee == null)
+			throw new FunctionalException();
+
+		EmployeeBean employeeBean = employeeMapper.entityToBean(employee);
+
+		LOGGER.trace("[Uid: {}] [Thread: {}] >>> Valor de retorno: [{}];", utils.getAuthenticationName(),
+				utils.getThreadId(), employeeBean);
+
+		LOGGER.info("[Uid: {}] [Thread: {}] >>> Salida del servicio: [{}];", utils.getAuthenticationName(),
+				utils.getThreadId(), utils.getMethodName(Thread.currentThread().getStackTrace()));
+
+		return employeeBean;
 	}
 
 	@Override

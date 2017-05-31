@@ -45,8 +45,7 @@ public class EmployeeController extends GenericController {
 	 * @return EmployeeCompleteResponseDto
 	 */
 	@RequestMapping(value = UrlConstants.EMPLOYEE_ID, method = RequestMethod.GET)
-	public EmployeeCompleteResponseDto getEmployeeByEmployeeNumber(
-			@Valid @PathVariable("employeeId") String employeeId) {
+	public EmployeeCompleteResponseDto getEmployeeById(@Valid @PathVariable("employeeId") String employeeId) {
 		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al método: [{}];", utils.getAuthenticationName(),
 				utils.getThreadId(), utils.getMethodName(Thread.currentThread().getStackTrace()));
 
