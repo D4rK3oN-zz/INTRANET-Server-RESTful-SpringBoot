@@ -12,27 +12,22 @@ import lombok.Getter;
  */
 public enum ExceptionEnum {
 
-	INVALID_INPUT_PARAMETERS(1, HttpStatus.BAD_REQUEST, "invalid.input.parameters"),
-	NO_DATA_FOUND(100, HttpStatus.NO_CONTENT, "no.data.found");
-
-	@Getter
-	private Integer code;
+	INVALID_INPUT_PARAMETERS(HttpStatus.BAD_REQUEST, "invalid.input.parameters"),
+	NO_DATA_FOUND(HttpStatus.NO_CONTENT, "no.data.found");
 
 	@Getter
 	private HttpStatus httpStatus;
 
 	@Getter
-	private String key;
+	private String secondKey;
 
 	/**
 	 * 
-	 * @param id
 	 * @param httpStatus
-	 * @param key
+	 * @param secondKey
 	 */
-	private ExceptionEnum(final Integer code, final HttpStatus httpStatus, final String key) {
-		this.code = code;
+	private ExceptionEnum(final HttpStatus httpStatus, final String secondKey) {
 		this.httpStatus = httpStatus;
-		this.key = key;
+		this.secondKey = secondKey;
 	}
 }

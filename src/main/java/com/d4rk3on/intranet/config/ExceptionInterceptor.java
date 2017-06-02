@@ -69,7 +69,7 @@ public class ExceptionInterceptor {
 	 * 
 	 * @param ex
 	 */
-	@AfterThrowing(pointcut = "execution(* com.d4rk3on.intranet.*.web.*Service.*(..))", throwing = "ex")
+	@AfterThrowing(pointcut = "execution(* com.d4rk3on.intranet.*.web.*Controller.*(..))", throwing = "ex")
 	public void controllerException(Throwable ex) {
 		LOGGER.info("[Uid: {}] [Thread: {}] >>> Excepción en la capa de control.", utils.getAuthenticationName(),
 				utils.getThreadId());
