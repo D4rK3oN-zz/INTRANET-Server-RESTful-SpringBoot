@@ -19,7 +19,7 @@ import lombok.Data;
  */
 @Document(collection = MongoDbConstants.COL_EMPLOYEE)
 @Data
-public class Employee {
+public class EmployeeEntity {
 
 	@Id
 	private String id;

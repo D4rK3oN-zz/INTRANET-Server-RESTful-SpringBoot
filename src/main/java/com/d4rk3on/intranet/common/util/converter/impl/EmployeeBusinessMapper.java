@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.d4rk3on.intranet.common.model.bean.EmployeeBean;
-import com.d4rk3on.intranet.common.model.entity.Employee;
+import com.d4rk3on.intranet.common.model.entity.EmployeeEntity;
 import com.d4rk3on.intranet.common.util.converter.BusinessLogicMapper;
 import com.d4rk3on.intranet.common.util.function.Utils;
 import com.d4rk3on.intranet.error.model.exception.TechnicalException;
@@ -17,7 +17,7 @@ import com.d4rk3on.intranet.error.model.exception.TechnicalException;
  *
  */
 @Component
-public class EmployeeBusinessMapper implements BusinessLogicMapper<EmployeeBean, Employee> {
+public class EmployeeBusinessMapper implements BusinessLogicMapper<EmployeeBean, EmployeeEntity> {
 
 	/**
 	 * Generated Serial Version ID
@@ -34,30 +34,30 @@ public class EmployeeBusinessMapper implements BusinessLogicMapper<EmployeeBean,
 
 	private EmployeeBean employeeBean;
 
-	private Employee employee;
+	private EmployeeEntity employeeEntity;
 
 	@Override
-	public EmployeeBean entityToBean(Employee e) {
+	public EmployeeBean entityToBean(EmployeeEntity entity) {
 		try {
 			LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al método: [{}];", utils.getAuthenticationName(),
 					utils.getThreadId(), utils.getMethodName(Thread.currentThread().getStackTrace()));
 
-			LOGGER.debug("[Uid: {}] [Thread: {}] >>> Parámetros de entrada: <e> [{}];", utils.getAuthenticationName(),
-					utils.getThreadId(), e);
+			LOGGER.debug("[Uid: {}] [Thread: {}] >>> Parámetros de entrada: <entity> [{}];",
+					utils.getAuthenticationName(), utils.getThreadId(), entity);
 
 			employeeBean = new EmployeeBean();
 
-			employeeBean.setId(e.getId());
-			employeeBean.setEmployeeNumber(e.getEmployeeNumber());
-			employeeBean.setUsername(e.getUsername());
-			employeeBean.setPassword(e.getPassword());
-			employeeBean.setDocumentId(e.getDocumentId());
-			employeeBean.setName(e.getName());
-			employeeBean.setSurname(e.getSurname());
-			employeeBean.setEmail(e.getEmail());
-			employeeBean.setCreationDate(e.getCreationDate());
-			employeeBean.setModifyDate(e.getModifyDate());
-			employeeBean.setDeleteDate(e.getDeleteDate());
+			employeeBean.setId(entity.getId());
+			employeeBean.setEmployeeNumber(entity.getEmployeeNumber());
+			employeeBean.setUsername(entity.getUsername());
+			employeeBean.setPassword(entity.getPassword());
+			employeeBean.setDocumentId(entity.getDocumentId());
+			employeeBean.setName(entity.getName());
+			employeeBean.setSurname(entity.getSurname());
+			employeeBean.setEmail(entity.getEmail());
+			employeeBean.setCreationDate(entity.getCreationDate());
+			employeeBean.setModifyDate(entity.getModifyDate());
+			employeeBean.setDeleteDate(entity.getDeleteDate());
 
 			LOGGER.trace("[Uid: {}] [Thread: {}] >>> Valor de retorno: [{}];", utils.getAuthenticationName(),
 					utils.getThreadId(), employeeBean);
@@ -80,11 +80,11 @@ public class EmployeeBusinessMapper implements BusinessLogicMapper<EmployeeBean,
 	}
 
 	@Override
-	public Employee beanToEntity(EmployeeBean b) {
+	public EmployeeEntity beanToEntity(EmployeeBean bean) {
 
-		employee = new Employee();
+		employeeEntity = new EmployeeEntity();
 
-		return employee;
+		return employeeEntity;
 	}
 
 }

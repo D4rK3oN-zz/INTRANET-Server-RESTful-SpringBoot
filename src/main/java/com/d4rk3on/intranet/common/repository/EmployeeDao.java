@@ -3,7 +3,7 @@ package com.d4rk3on.intranet.common.repository;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import com.d4rk3on.intranet.common.model.entity.Employee;
+import com.d4rk3on.intranet.common.model.entity.EmployeeEntity;
 
 /**
  * Employee repository
@@ -12,21 +12,21 @@ import com.d4rk3on.intranet.common.model.entity.Employee;
  *
  */
 @Repository
-public interface EmployeeDao extends MongoRepository<Employee, String> {
+public interface EmployeeDao extends MongoRepository<EmployeeEntity, String> {
 
 	/**
 	 * Find the Employee by his employee number
 	 * 
 	 * @param employeeNumber
-	 * @return Employee
+	 * @return EmployeeEntity
 	 */
-	public Employee findByEmployeeNumber(Integer employeeNumber);
+	public EmployeeEntity findByEmployeeNumber(Integer employeeNumber);
 
 /**
  * Find the Employee by his username
  * 
  * @param username
- * @return Employee
+ * @return EmployeeEntity
  */
-	public Employee findByUsername(String username);
+	public EmployeeEntity findByUsername(String username);
 }

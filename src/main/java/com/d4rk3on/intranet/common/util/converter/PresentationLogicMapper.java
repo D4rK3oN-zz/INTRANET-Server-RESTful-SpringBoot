@@ -15,16 +15,16 @@ public interface PresentationLogicMapper<Bean, Dto> extends Serializable {
 	/**
 	 *  Maps Dto class to Bean class
 	 * 
-	 * @param d
+	 * @param dto
 	 * @return
 	 */
-	public Bean dtoToBean(Dto d);
+	public Bean dtoToBean(Dto dto);
 
 	/**
 	 *  Maps Bean class to Dto class
 	 * 
-	 * @param b
+	 * @param bean
 	 * @return
 	 */
-	public Dto beanToDto(Bean b);
+	public Dto beanToDto(Bean bean);
 }

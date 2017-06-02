@@ -15,16 +15,16 @@ public interface BusinessLogicMapper<Bean, Entity> extends Serializable {
 	/**
 	 * Maps Entity class to Bean class
 	 * 
-	 * @param e
+	 * @param entity
 	 * @return
 	 */
-	public Bean entityToBean(Entity e);
+	public Bean entityToBean(Entity entity);
 
 	/**
 	 * Maps Bean class to Entity class
 	 * 
-	 * @param b
+	 * @param bean
 	 * @return
 	 */
-	public Entity beanToEntity(Bean b);
+	public Entity beanToEntity(Bean bean);
 }

@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.d4rk3on.intranet.common.model.bean.EmployeeBean;
-import com.d4rk3on.intranet.common.model.entity.Employee;
+import com.d4rk3on.intranet.common.model.entity.EmployeeEntity;
 import com.d4rk3on.intranet.common.repository.EmployeeDao;
 import com.d4rk3on.intranet.common.service.EmployeeService;
 import com.d4rk3on.intranet.common.util.converter.BusinessLogicMapper;
@@ -45,7 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private Utils utils;
 
 	@Autowired
-	private BusinessLogicMapper<EmployeeBean, Employee> employeeMapper;
+	private BusinessLogicMapper<EmployeeBean, EmployeeEntity> employeeMapper;
 
 	@Autowired
 	private EmployeeDao employeeDao;
@@ -88,15 +88,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 		LOGGER.debug("[Uid: {}] [Thread: {}] >>> Parámetros de entrada: <id> [{}];", utils.getAuthenticationName(),
 				utils.getThreadId(), id);
 
-		Employee employee = employeeDao.findOne(id);
+		EmployeeEntity employeeEntity = employeeDao.findOne(id);
 
-		LOGGER.trace("[Uid: {}] [Thread: {}] >>> Respuesta de la db: <employee> [{}];", utils.getAuthenticationName(),
-				utils.getThreadId(), employee);
+		LOGGER.trace("[Uid: {}] [Thread: {}] >>> Respuesta de la db: <employeeEntity> [{}];",
+				utils.getAuthenticationName(), utils.getThreadId(), employeeEntity);
 
-		if (employee == null)
+		if (employeeEntity == null)
 			throw new FunctionalException(ErrorConstants.EMPLOYEE_KEY, ExceptionEnum.NO_DATA_FOUND);
 
-		EmployeeBean employeeBean = employeeMapper.entityToBean(employee);
+		EmployeeBean employeeBean = employeeMapper.entityToBean(employeeEntity);
 
 		LOGGER.trace("[Uid: {}] [Thread: {}] >>> Valor de retorno: [{}];", utils.getAuthenticationName(),
 				utils.getThreadId(), employeeBean);
@@ -130,17 +130,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al servicio: [{}];", utils.getAuthenticationName(),
 				utils.getThreadId(), utils.getMethodName(Thread.currentThread().getStackTrace()));
 
-		List<Employee> listEmployee = employeeDao.findAll();
+		List<EmployeeEntity> listEmployeeEntity = employeeDao.findAll();
 
-		LOGGER.trace("[Uid: {}] [Thread: {}] >>> Respuesta de la db: <listEmployee> [{}];",
-				utils.getAuthenticationName(), utils.getThreadId(), listEmployee);
+		LOGGER.trace("[Uid: {}] [Thread: {}] >>> Respuesta de la db: <listEmployeeEntity> [{}];",
+				utils.getAuthenticationName(), utils.getThreadId(), listEmployeeEntity);
 
-		if (listEmployee == null || listEmployee.isEmpty())
+		if (listEmployeeEntity == null || listEmployeeEntity.isEmpty())
 			throw new FunctionalException(ErrorConstants.EMPLOYEE_KEY, ExceptionEnum.NO_DATA_FOUND);
 
 		List<EmployeeBean> listEmployeeBean = new ArrayList<EmployeeBean>();
 
-		listEmployee.forEach(employee -> listEmployeeBean.add(employeeMapper.entityToBean(employee)));
+		listEmployeeEntity.forEach(employee -> listEmployeeBean.add(employeeMapper.entityToBean(employee)));
 
 		LOGGER.trace("[Uid: {}] [Thread: {}] >>> Valor de retorno: [{}];", utils.getAuthenticationName(),
 				utils.getThreadId(), listEmployeeBean);
