@@ -81,10 +81,45 @@ public class EmployeeBusinessMapper implements BusinessLogicMapper<EmployeeBean,
 
 	@Override
 	public EmployeeEntity beanToEntity(EmployeeBean bean) {
+		try {
+			LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al método: [{}];", utils.getAuthenticationName(),
+					utils.getThreadId(), utils.getMethodName(Thread.currentThread().getStackTrace()));
 
-		employeeEntity = new EmployeeEntity();
+			LOGGER.debug("[Uid: {}] [Thread: {}] >>> Parámetros de entrada: <bean> [{}];",
+					utils.getAuthenticationName(), utils.getThreadId(), bean);
 
-		return employeeEntity;
+			employeeEntity = new EmployeeEntity();
+
+			// employeeEntity.setId(bean.getId());
+			employeeEntity.setEmployeeNumber(bean.getEmployeeNumber());
+			employeeEntity.setUsername(bean.getUsername());
+			employeeEntity.setPassword(bean.getPassword());
+			employeeEntity.setDocumentId(bean.getDocumentId());
+			employeeEntity.setName(bean.getName());
+			employeeEntity.setSurname(bean.getSurname());
+			employeeEntity.setEmail(bean.getEmail());
+			// employeeEntity.setCreationDate(bean.getCreationDate());
+			// employeeEntity.setModifyDate(bean.getModifyDate());
+			// employeeEntity.setDeleteDate(bean.getDeleteDate());
+
+			LOGGER.trace("[Uid: {}] [Thread: {}] >>> Valor de retorno: [{}];", utils.getAuthenticationName(),
+					utils.getThreadId(), employeeEntity);
+
+			return employeeEntity;
+
+		} catch (Exception ex) {
+			LOGGER.info("[Uid: {}] [Thread: {}] >>> Excepción en el mapeo de objetos.", utils.getAuthenticationName(),
+					utils.getThreadId());
+
+			LOGGER.error("[Uid: {}] [Thread: {}] >>> {}", utils.getAuthenticationName(), utils.getThreadId(),
+					ex.getMessage());
+
+			throw new TechnicalException();
+
+		} finally {
+			LOGGER.info("[Uid: {}] [Thread: {}] >>> Salida del método: [{}];", utils.getAuthenticationName(),
+					utils.getThreadId(), utils.getMethodName(Thread.currentThread().getStackTrace()));
+		}
 	}
 
 }
