@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import com.d4rk3on.intranet.common.model.bean.EmployeeBean;
 import com.d4rk3on.intranet.common.model.entity.EmployeeEntity;
 import com.d4rk3on.intranet.common.util.converter.BusinessLogicMapper;
-import com.d4rk3on.intranet.common.util.function.Utils;
+import com.d4rk3on.intranet.common.util.function.CommonUtils;
 import com.d4rk3on.intranet.error.model.exception.TechnicalException;
 
 /**
@@ -30,7 +30,7 @@ public class EmployeeBusinessMapper implements BusinessLogicMapper<EmployeeBean,
 	protected final Logger LOGGER = LoggerFactory.getLogger(EmployeeBusinessMapper.class);
 
 	@Autowired
-	private Utils utils;
+	private CommonUtils utils;
 
 	private EmployeeBean employeeBean;
 

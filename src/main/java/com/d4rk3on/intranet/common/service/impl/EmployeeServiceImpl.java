@@ -16,7 +16,7 @@ import com.d4rk3on.intranet.common.model.entity.EmployeeEntity;
 import com.d4rk3on.intranet.common.repository.EmployeeDao;
 import com.d4rk3on.intranet.common.service.EmployeeService;
 import com.d4rk3on.intranet.common.util.converter.BusinessLogicMapper;
-import com.d4rk3on.intranet.common.util.function.Utils;
+import com.d4rk3on.intranet.common.util.function.CommonUtils;
 import com.d4rk3on.intranet.error.model.exception.FunctionalException;
 import com.d4rk3on.intranet.error.util.ErrorConstants;
 import com.d4rk3on.intranet.error.util.ExceptionEnum;
@@ -42,7 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	protected final Logger LOGGER = LoggerFactory.getLogger(EmployeeServiceImpl.class);
 
 	@Autowired
-	private Utils utils;
+	private CommonUtils utils;
 
 	@Autowired
 	private BusinessLogicMapper<EmployeeBean, EmployeeEntity> employeeMapper;

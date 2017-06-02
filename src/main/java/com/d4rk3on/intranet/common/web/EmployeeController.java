@@ -15,7 +15,7 @@ import com.d4rk3on.intranet.common.model.dto.response.EmployeeCompleteResponseDt
 import com.d4rk3on.intranet.common.model.dto.response.EmployeeSimpleResponseDto;
 import com.d4rk3on.intranet.common.service.EmployeeService;
 import com.d4rk3on.intranet.common.util.constant.UrlConstants;
-import com.d4rk3on.intranet.common.util.function.Utils;
+import com.d4rk3on.intranet.common.util.function.CommonUtils;
 
 /**
  * Employee controller
@@ -33,7 +33,7 @@ public class EmployeeController extends GenericController {
 	private static final long serialVersionUID = -5113575402724058415L;
 
 	@Autowired
-	private Utils utils;
+	private CommonUtils utils;
 
 	@Autowired
 	private EmployeeService employeeService;

@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
-import com.d4rk3on.intranet.common.util.function.Utils;
+import com.d4rk3on.intranet.common.util.function.CommonUtils;
 import com.d4rk3on.intranet.error.model.exception.FunctionalException;
 import com.d4rk3on.intranet.error.model.exception.TechnicalException;
 import com.d4rk3on.intranet.error.util.ErrorConstants;
@@ -28,7 +28,7 @@ public class ExceptionInterceptor {
 	protected final Logger LOGGER = LoggerFactory.getLogger(ExceptionInterceptor.class);
 
 	@Autowired
-	private Utils utils;
+	private CommonUtils utils;
 
 	/**
 	 * Captures exceptions in the repositories layer

@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component;
 import com.d4rk3on.intranet.common.util.constant.AppConstants;
 
 /**
- * Generic utils functions
+ * Common utils functions
  * 
  * @author javier.moreno
  *
  */
 @Component
-public class Utils implements Serializable {
+public class CommonUtils implements Serializable {
 
 	/**
 	 * Generated Serial Version ID
@@ -26,7 +26,7 @@ public class Utils implements Serializable {
 	/**
 	 * Logback logger
 	 */
-	protected final Logger LOGGER = LoggerFactory.getLogger(Utils.class);
+	protected final Logger LOGGER = LoggerFactory.getLogger(CommonUtils.class);
 
 	/**
 	 * Get de Uid
