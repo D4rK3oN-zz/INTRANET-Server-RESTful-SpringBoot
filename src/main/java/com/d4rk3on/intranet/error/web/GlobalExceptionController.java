@@ -1,9 +1,15 @@
-package com.d4rk3on.intranet.error.model.web;
+package com.d4rk3on.intranet.error.web;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 
 import com.d4rk3on.intranet.common.web.GenericController;
 
+/**
+ * Global exception controller
+ * 
+ * @author javier.moreno
+ *
+ */
 @ControllerAdvice
 public class GlobalExceptionController extends GenericController {
 

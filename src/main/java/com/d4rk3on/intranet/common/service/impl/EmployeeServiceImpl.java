@@ -1,6 +1,7 @@
 package com.d4rk3on.intranet.common.service.impl;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -17,6 +18,8 @@ import com.d4rk3on.intranet.common.service.EmployeeService;
 import com.d4rk3on.intranet.common.util.converter.BusinessLogicMapper;
 import com.d4rk3on.intranet.common.util.function.Utils;
 import com.d4rk3on.intranet.error.model.exception.FunctionalException;
+import com.d4rk3on.intranet.error.util.ErrorConstants;
+import com.d4rk3on.intranet.error.util.ExceptionEnum;
 
 /**
  * Employee service implementation
@@ -91,7 +94,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 				utils.getThreadId(), employee);
 
 		if (employee == null)
-			throw new FunctionalException();
+			throw new FunctionalException(ErrorConstants.EMPLOYEE_KEY, ExceptionEnum.NO_DATA_FOUND);
 
 		EmployeeBean employeeBean = employeeMapper.entityToBean(employee);
 
@@ -124,8 +127,28 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public List<EmployeeBean> listEmployees() {
-		// TODO Auto-generated method stub
-		return null;
+		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al servicio: [{}];", utils.getAuthenticationName(),
+				utils.getThreadId(), utils.getMethodName(Thread.currentThread().getStackTrace()));
+
+		List<Employee> listEmployee = employeeDao.findAll();
+
+		LOGGER.trace("[Uid: {}] [Thread: {}] >>> Respuesta de la db: <listEmployee> [{}];",
+				utils.getAuthenticationName(), utils.getThreadId(), listEmployee);
+
+		if (listEmployee == null || listEmployee.isEmpty())
+			throw new FunctionalException(ErrorConstants.EMPLOYEE_KEY, ExceptionEnum.NO_DATA_FOUND);
+
+		List<EmployeeBean> listEmployeeBean = new ArrayList<EmployeeBean>();
+
+		listEmployee.forEach(employee -> listEmployeeBean.add(employeeMapper.entityToBean(employee)));
+
+		LOGGER.trace("[Uid: {}] [Thread: {}] >>> Valor de retorno: [{}];", utils.getAuthenticationName(),
+				utils.getThreadId(), listEmployeeBean);
+
+		LOGGER.info("[Uid: {}] [Thread: {}] >>> Salida del servicio: [{}];", utils.getAuthenticationName(),
+				utils.getThreadId(), utils.getMethodName(Thread.currentThread().getStackTrace()));
+
+		return listEmployeeBean;
 	}
 
 	@Override

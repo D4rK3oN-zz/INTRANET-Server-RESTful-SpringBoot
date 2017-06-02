@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import com.d4rk3on.intranet.common.util.constant.AppConstants;
 
 /**
- * Generic Utils
+ * Generic utils functions
  * 
  * @author javier.moreno
  *
@@ -29,7 +29,7 @@ public class Utils implements Serializable {
 	protected final Logger LOGGER = LoggerFactory.getLogger(Utils.class);
 
 	/**
-	 * 
+	 * Get de Uid
 	 * 
 	 * @return String
 	 */
@@ -38,7 +38,7 @@ public class Utils implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Get th current method name
 	 * 
 	 * @param stackTraceElements
 	 * @return String
@@ -48,7 +48,7 @@ public class Utils implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Get the current thread id
 	 * 
 	 * @return long
 	 */

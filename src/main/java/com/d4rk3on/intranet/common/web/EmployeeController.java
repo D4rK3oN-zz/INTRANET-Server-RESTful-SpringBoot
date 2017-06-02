@@ -39,7 +39,7 @@ public class EmployeeController extends GenericController {
 	private EmployeeService employeeService;
 
 	/**
-	 * Obtiene el empleado por su número de empleado.
+	 * Get the Employee by employee number
 	 * 
 	 * @param employeeId
 	 * @return EmployeeCompleteResponseDto
@@ -58,7 +58,7 @@ public class EmployeeController extends GenericController {
 	}
 
 	/**
-	 * Recupera el listado de empleados.
+	 * Get the list of employees
 	 * 
 	 * @return List<EmployeeResponseDto>
 	 */
@@ -66,6 +66,9 @@ public class EmployeeController extends GenericController {
 	public List<EmployeeSimpleResponseDto> getEmployees() {
 		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al método: [{}];", utils.getAuthenticationName(),
 				utils.getThreadId(), utils.getMethodName(Thread.currentThread().getStackTrace()));
+
+		List<EmployeeBean> listEmployee = employeeService.listEmployees();
+
 		return null;
 	}
 

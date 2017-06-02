@@ -47,7 +47,17 @@ public class EmployeeBusinessMapper implements BusinessLogicMapper<EmployeeBean,
 
 			employeeBean = new EmployeeBean();
 
-			// TODO: setters
+			employeeBean.setId(e.getId());
+			employeeBean.setEmployeeNumber(e.getEmployeeNumber());
+			employeeBean.setUsername(e.getUsername());
+			employeeBean.setPassword(e.getPassword());
+			employeeBean.setDocumentId(e.getDocumentId());
+			employeeBean.setName(e.getName());
+			employeeBean.setSurname(e.getSurname());
+			employeeBean.setEmail(e.getEmail());
+			employeeBean.setCreationDate(e.getCreationDate());
+			employeeBean.setModifyDate(e.getModifyDate());
+			employeeBean.setDeleteDate(e.getDeleteDate());
 
 			LOGGER.trace("[Uid: {}] [Thread: {}] >>> Valor de retorno: [{}];", utils.getAuthenticationName(),
 					utils.getThreadId(), employeeBean);
