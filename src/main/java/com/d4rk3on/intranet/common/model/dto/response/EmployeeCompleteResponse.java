@@ -12,7 +12,7 @@ import lombok.Setter;
  * @author javier.moreno
  *
  */
-public class EmployeeCompleteResponseDto implements Serializable {
+public class EmployeeCompleteResponse implements Serializable {
 
 	/**
 	 * Generated Serial Version ID

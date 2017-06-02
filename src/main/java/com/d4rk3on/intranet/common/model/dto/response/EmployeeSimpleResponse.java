@@ -11,7 +11,7 @@ import lombok.Setter;
  * @author javier.moreno
  *
  */
-public class EmployeeSimpleResponseDto implements Serializable {
+public class EmployeeSimpleResponse implements Serializable {
 
 	/**
 	 * Generated Serial Version ID
