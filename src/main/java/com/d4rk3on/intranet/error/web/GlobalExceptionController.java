@@ -25,5 +25,4 @@ public class GlobalExceptionController extends GenericController {
 	 */
 	protected final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionController.class);
 
-	
 }

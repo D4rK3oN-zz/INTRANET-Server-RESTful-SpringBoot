@@ -1,5 +1,9 @@
-package com.d4rk3on.intranet.config;
+package com.d4rk3on.intranet.config.aspect;
 
+import com.d4rk3on.intranet.common.util.function.CommonUtils;
+import com.d4rk3on.intranet.error.model.exception.FunctionalException;
+import com.d4rk3on.intranet.error.model.exception.TechnicalException;
+import com.d4rk3on.intranet.error.util.ErrorConstants;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.slf4j.Logger;
@@ -7,32 +11,26 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
-import com.d4rk3on.intranet.common.util.function.CommonUtils;
-import com.d4rk3on.intranet.error.model.exception.FunctionalException;
-import com.d4rk3on.intranet.error.model.exception.TechnicalException;
-import com.d4rk3on.intranet.error.util.ErrorConstants;
-
 /**
  * Aspect to capture the errors by layers
- * 
- * @author javier.moreno
  *
+ * @author javier.moreno
  */
 @Aspect
 @Configuration
-public class ExceptionInterceptor {
+public class ExceptionAspect {
 
 	/**
 	 * Logback logger
 	 */
-	protected final Logger LOGGER = LoggerFactory.getLogger(ExceptionInterceptor.class);
+	protected final Logger LOGGER = LoggerFactory.getLogger(ExceptionAspect.class);
 
 	@Autowired
 	private CommonUtils utils;
 
 	/**
 	 * Captures exceptions in the repositories layer
-	 * 
+	 *
 	 * @param ex
 	 */
 	@AfterThrowing(pointcut = "execution(* com.d4rk3on.intranet.*.repository.*Dao.*(..))", throwing = "ex")
@@ -49,7 +47,7 @@ public class ExceptionInterceptor {
 
 	/**
 	 * Captures exceptions in the services layer
-	 * 
+	 *
 	 * @param ex
 	 */
 	@AfterThrowing(pointcut = "execution(* com.d4rk3on.intranet.*.service.*Service.*(..))", throwing = "ex")
@@ -66,7 +64,7 @@ public class ExceptionInterceptor {
 
 	/**
 	 * Captures exceptions in the controllers layer
-	 * 
+	 *
 	 * @param ex
 	 */
 	@AfterThrowing(pointcut = "execution(* com.d4rk3on.intranet.*.web.*Controller.*(..))", throwing = "ex")
