@@ -37,7 +37,11 @@ public class LoggerAspect {
 	protected void allRepository() {
 	}
 
-	@Around("allController() || allService() || allRepository()")
+	@Pointcut("execution(* com.d4rk3on.intranet.*.util.converter.*(..)) && @annotation(org.springframework.stereotype.Component)")
+	protected void allConverter() {
+	}
+
+	@Around("allController() || allService() || allRepository() || allConverter()")
 	public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
 		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al método: [{}];",
 				SecurityContextHolder.getContext().getAuthentication().getName(),
