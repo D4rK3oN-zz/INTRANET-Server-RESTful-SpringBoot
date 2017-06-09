@@ -25,50 +25,48 @@ public class LoggerAspect {
 	 */
 	private final Logger LOGGER = LoggerFactory.getLogger(LoggerAspect.class);
 
-	@Pointcut("within(@org.springframework.web.bind.annotation.RestController *)")
+	private static final String EXEC_CONTROLLER = "execution(* com.d4rk3on.intranet.*.web.*Controller.*(..))";
+	private static final String EXEC_SERVICE = "execution(* com.d4rk3on.intranet.*.service.*.*ServiceImpl.*(..))";
+	private static final String EXEC_REPOSITORY = "execution(* com.d4rk3on.intranet.*.repository.*Dao.*(..))";
+	// private static final String EXEC_CONVERTER = "";
+
+	@Pointcut(EXEC_CONTROLLER)
 	protected void allController() {
 	}
 
-	@Pointcut("within(@org.springframework.stereotype.Service *)")
+	@Pointcut(EXEC_SERVICE)
 	protected void allService() {
 	}
 
-	@Pointcut("within(@org.springframework.stereotype.Repository *)")
+	@Pointcut(EXEC_REPOSITORY)
 	protected void allRepository() {
 	}
 
-	@Pointcut("execution(* com.d4rk3on.intranet.*.util.converter.*(..)) && @annotation(org.springframework.stereotype.Component)")
-	protected void allConverter() {
-	}
+	// @Pointcut(EXEC_CONVERTER)
+	// protected void allConverter() {
+	// }
 
-	@Around("allController() || allService() || allRepository() || allConverter()")
-	public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
-		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al método: [{}];",
-				SecurityContextHolder.getContext().getAuthentication().getName(),
-				Thread.currentThread().getId(), joinPoint.getSignature().getName());
+	@Around("allController() || allService() || allRepository()")
+	public Object aroundController(ProceedingJoinPoint joinPoint) throws Throwable {
+
+		String userId = SecurityContextHolder.getContext().getAuthentication().getName();
+		long threadId = Thread.currentThread().getId();
+		String methodName = joinPoint.getSignature().toShortString();
+
+		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al método: [{}];", userId, threadId, methodName);
 
 		if (joinPoint.getArgs() != null && joinPoint.getArgs().length > 0)
-			LOGGER.debug("[Uid: {}] [Thread: {}] >>> Parámetros de entrada: [{}];",
-					SecurityContextHolder.getContext().getAuthentication().getName(),
-					Thread.currentThread().getId(), Arrays.toString(joinPoint.getArgs()));
+			LOGGER.debug("[Uid: {}] [Thread: {}] >>> Parámetros de entrada: {};", userId, threadId,
+					Arrays.toString(joinPoint.getArgs()));
 
 		final Object resultMethodExecution = joinPoint.proceed();
 
-		LOGGER.info("[Uid: {}] [Thread: {}] >>> Salida del método: [{}];",
-				SecurityContextHolder.getContext().getAuthentication().getName(),
-				Thread.currentThread().getId(), joinPoint.getSignature().getName());
+		LOGGER.trace("[Uid: {}] [Thread: {}] >>> Valor de retorno: [{}];", userId, threadId,
+				resultMethodExecution.toString());
+
+		LOGGER.info("[Uid: {}] [Thread: {}] >>> Salida del método: [{}];", userId, threadId, methodName);
 
 		return resultMethodExecution;
 	}
-/*
-	@Before("allMethod()")
-	public void logBefore(JoinPoint joinPoint) {
 
-	}
-
-	@AfterReturning(pointcut = "allMethod()", returning = "result")
-	public void logAfter(JoinPoint joinPoint, Object result) {
-
-	}
-*/
 }

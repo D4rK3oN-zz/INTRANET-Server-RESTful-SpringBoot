@@ -46,11 +46,6 @@ public class EmployeeController extends GenericController {
 	 */
 	@RequestMapping(value = UrlConstants.EMPLOYEE_ID, method = RequestMethod.GET)
 	public EmployeeCompleteResponse getEmployeeById(@Valid @PathVariable("employeeId") String employeeId) {
-		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al método: [{}];", utils.getAuthenticationName(),
-				utils.getThreadId(), utils.getMethodName(Thread.currentThread().getStackTrace()));
-
-		LOGGER.debug("[Uid: {}] [Thread: {}] >>> Parámetros de entrada: <employeeId> [{}];",
-				utils.getAuthenticationName(), utils.getThreadId(), employeeId);
 
 		EmployeeBean employee = employeeService.getEmployeeById(employeeId);
 
@@ -64,8 +59,6 @@ public class EmployeeController extends GenericController {
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public List<EmployeeSimpleResponse> getEmployees() {
-		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al método: [{}];", utils.getAuthenticationName(),
-				utils.getThreadId(), utils.getMethodName(Thread.currentThread().getStackTrace()));
 
 		List<EmployeeBean> listEmployee = employeeService.listEmployees();
 

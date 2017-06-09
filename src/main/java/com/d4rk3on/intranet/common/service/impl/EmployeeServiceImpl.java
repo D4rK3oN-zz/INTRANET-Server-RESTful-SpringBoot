@@ -82,11 +82,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public EmployeeBean getEmployeeById(String id) {
-		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al servicio: [{}];", utils.getAuthenticationName(),
-				utils.getThreadId(), utils.getMethodName(Thread.currentThread().getStackTrace()));
-
-		LOGGER.debug("[Uid: {}] [Thread: {}] >>> Parámetros de entrada: <id> [{}];", utils.getAuthenticationName(),
-				utils.getThreadId(), id);
 
 		EmployeeEntity employeeEntity = employeeDao.findOne(id);
 
@@ -100,9 +95,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 		LOGGER.trace("[Uid: {}] [Thread: {}] >>> Valor de retorno: [{}];", utils.getAuthenticationName(),
 				utils.getThreadId(), employeeBean);
-
-		LOGGER.info("[Uid: {}] [Thread: {}] >>> Salida del servicio: [{}];", utils.getAuthenticationName(),
-				utils.getThreadId(), utils.getMethodName(Thread.currentThread().getStackTrace()));
 
 		return employeeBean;
 	}
@@ -127,8 +119,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public List<EmployeeBean> listEmployees() {
-		LOGGER.info("[Uid: {}] [Thread: {}] >>> Entrada al servicio: [{}];", utils.getAuthenticationName(),
-				utils.getThreadId(), utils.getMethodName(Thread.currentThread().getStackTrace()));
 
 		List<EmployeeEntity> listEmployeeEntity = employeeDao.findAll();
 
@@ -144,9 +134,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 		LOGGER.trace("[Uid: {}] [Thread: {}] >>> Valor de retorno: [{}];", utils.getAuthenticationName(),
 				utils.getThreadId(), listEmployeeBean);
-
-		LOGGER.info("[Uid: {}] [Thread: {}] >>> Salida del servicio: [{}];", utils.getAuthenticationName(),
-				utils.getThreadId(), utils.getMethodName(Thread.currentThread().getStackTrace()));
 
 		return listEmployeeBean;
 	}
